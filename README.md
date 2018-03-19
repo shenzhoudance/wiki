@@ -25,3 +25,11 @@ gem 'simple_form', '~> 3.5', '>= 3.5.1'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 bundle install
 ---
+git add .
+git commit -m "Add Application Gems"
+git push origin Gemfile_gem
+```
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpi7gy2rdqj31kw0tj7ar.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpi7gque14j318g0uq0xw.jpg)
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi7gk0ws5j318u0wiq9m.jpg)
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpi7g1mdkij31980p0afh.jpg)

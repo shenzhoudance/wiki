@@ -66,3 +66,22 @@ rails server
 rails server
 ```
 ![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi8nhbtoij31bq0c6gmr.jpg)
+
+```
+app/controllers/articles_controller.rb
+---
+def index
+end
+---
+app/views/articles/index.html.haml
+---
+%h1 欢迎来到才华横溢的世界
+---
+```
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpi8sx7hkgj314o0c4aaz.jpg)
+
+```
+git add .
+git commit -m "add crud index"
+git push origin controller_articles
+```

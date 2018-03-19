@@ -85,3 +85,110 @@ git add .
 git commit -m "add crud index"
 git push origin controller_articles
 ```
+```
+---
+rails generate simple_form:install --bootstrap
+---
+app/controllers/articles_controller.rb
+---
+class ArticlesController < ApplicationController
+def index
+end
+
+def new
+  @article = Article.new
+end
+
+def create
+  @article = Article.new(artcle.params)
+  if @article.save
+    redirect_to @article
+  else
+    render 'new'
+  end
+end
+
+private
+
+def artcle_params
+  params.require(:article).permit(:title, :content)
+ end
+end
+---
+app/views/articles/_form.html.haml
+---
+= simple_form_for @article do |f|
+ f.input :title
+ f.input :cintent
+ f.submit
+---
+app/views/articles/new.html.haml
+---
+%h1 New Article
+
+= render 'form'
+
+= link_to 'back', root_path
+---
+rails server
+```
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpia28ivjlj30v40cmjsa.jpg)
+```
+app/views/articles/_form.html.haml
+---
+= simple_form_for @article do |f|
+ = f.input :title
+ = f.input :content
+ = f.submit
+---
+```
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpiahr40hgj30o60dgt9k.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpian48qobj30za0eqta2.jpg)
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpiamht9srj319m0bmgms.jpg)
+
+```
+app/controllers/articles_controller.rb
+---
+class ArticlesController < ApplicationController
+before_action :find_article, only:[:show]
+
+def index
+end
+
+def show
+end
+
+def new
+  @article = Article.new
+end
+
+def create
+  @article = Article.new(article_params)
+  if @article.save
+    redirect_to @article
+  else
+    render 'new'
+  end
+end
+
+private
+def find_article
+  @article = Article.find(params[:id])
+end
+
+def article_params
+  params.require(:article).permit(:title, :content)
+ end
+end
+---
+app/views/articles/show.html.haml
+---
+%h1= @article.title
+%p= @article.content
+
+.btn-group
+	= link_to "Back", root_path, class: "btn btn-default"
+	= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
+	= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
+```
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpib4e22hfj30ty0cijsm.jpg)

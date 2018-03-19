@@ -1,9 +1,8 @@
-%h1 欢迎来到才华横溢的世界
 
 - @articles.each do |article|
 	%h2= link_to article.title, article
 	%p
 		Published at
 		= article.created_at.strftime('%b %d, %Y')
-
+	%p= truncate(article.content, length: 200)
 = link_to "New Article", new_article_path

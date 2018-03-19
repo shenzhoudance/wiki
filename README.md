@@ -213,3 +213,21 @@ app/views/articles/index.html.haml
 ---
 ```
 ![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpiblku7pkj30w40iy40h.jpg)
+
+---
+```
+git checkout -b devise
+rails generate devise:install
+rails g devise:views
+rails g devise User
+rake db:migrate
+rails server
+http://localhost:3000/users/sign_up
+```
+![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpig4nm4xhj30uu0gegmw.jpg)
+
+```
+rails c
+
+
+```

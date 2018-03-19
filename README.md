@@ -1,24 +1,17 @@
-# README
+# 才华横溢 wiki 案例教学 9
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+cd workspace
+rails new wiki
+cd wiki
+git init
+git add .
+git commit -m "initial commit"
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+git remote add origin https://github.com/shenzhoudance/wiki.git
+git push -u origin master
+rails server
+```
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi6knbafmj316e0z21kx.jpg)

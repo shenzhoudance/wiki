@@ -33,3 +33,14 @@ git push origin Gemfile_gem
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpi7gque14j318g0uq0xw.jpg)
 ![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi7gk0ws5j318u0wiq9m.jpg)
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpi7g1mdkij31980p0afh.jpg)
+
+```
+git checkout -b model_article
+rails g model Article title:string content:text
+rake db:migrate
+---
+git add .
+git commit -m "Add model_article"
+git push origin model_article
+```
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpi7susbe0j31bq0eqad9.jpg)

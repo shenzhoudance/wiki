@@ -192,3 +192,24 @@ app/views/articles/show.html.haml
 	= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default"
 ```
 ![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpib4e22hfj30ty0cijsm.jpg)
+```
+app/controllers/articles_controller.rb
+---
+def index
+  @articles = Article.all.order("created_at DESC")
+end
+---
+app/views/articles/index.html.haml
+---
+%h1 欢迎来到才华横溢的世界
+
+- @articles.each do |article|
+	%h2= link_to article.title, article
+	%p
+		Published at
+		= article.created_at.strftime('%b %d, %Y')
+
+= link_to "New Article", new_article_path
+---
+```
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpiblku7pkj30w40iy40h.jpg)

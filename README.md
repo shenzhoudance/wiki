@@ -44,3 +44,25 @@ git commit -m "Add model_article"
 git push origin model_article
 ```
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpi7susbe0j31bq0eqad9.jpg)
+
+```
+git checkout -b controller_articles
+rails g controller Articles
+---
+```
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpi7xc2ru2j31am0cstao.jpg)
+```
+config/routes.rb
+---
+Rails.application.routes.draw do
+ resources :articles
+ root 'articles#index'
+end
+---
+rails server
+```
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi8mnyrutj31a80e0di3.jpg)
+```
+rails server
+```
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpi8nhbtoij31bq0c6gmr.jpg)

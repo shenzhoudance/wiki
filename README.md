@@ -241,3 +241,67 @@ git commit -m "add devise and generate user model"
 ```
 ![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj19ltap8j31kw0ml132.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj194nonij31by0cmn1m.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj1ca3e94j31kw0il43i.jpg)
+
+```
+git checkout -b relation
+rails g migration add_user_id_to_articles user_id:integer:index
+---
+app/models/article.rb
+---
+class Article < ApplicationRecord
+  belongs_to :user
+end
+---
+app/models/user.rb
+---
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  has_many :articles
+end
+---
+rake db:migrate
+```
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpj1m875aaj31kw0n6wjp.jpg)
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj1q5z0e4j3108074jss.jpg)
+
+```
+app/controllers/articles_controller.rb
+---
+def new
+  @article = current_user.articles.build
+end
+
+def create
+  @article = current_user.articles.build(article_params)
+  if @article.save
+    redirect_to @article
+  else
+    render 'new'
+  end
+end
+```
+```
+rails c
+2.3.1 :001 > @article = Articles.last
+2.3.1 :002 > @article = Article.last
+2.3.1 :003 > @article = Article.first
+2.3.1 :004 > @article.user_id = 1
+2.3.1 :005 > @article.save
+2.3.1 :006 > @article = Article.find(2)
+2.3.1 :007 > @article.user_id = 1
+2.3.1 :008 > @article.save
+2.3.1 :009 > exit
+---
+git status
+git add .
+git commit -m "add association between user and article"
+git push origin relation
+
+```
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj289fef5j31kw0l7qca.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj2a0atlgj30w00rq0w0.jpg)
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2cuz5lzj31kg0q2tfb.jpg)

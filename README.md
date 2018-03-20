@@ -427,5 +427,26 @@ git push origin category
 ```
 https://getbootstrap.com/docs/3.3/css/
 https://getbootstrap.com/docs/3.3/components/
+---
+app/controllers/articles_controller.rb
+---
+before_action :find_article, only: [:show, :edit, :update, :destroy]
+
+def edit
+end
+
+def update
+  if @article.update(article_params)
+    redirect_to @article
+  else
+    render 'edit'
+  end
+end
+
+def destroy
+  @article.destroy
+  redirect_to root_path
+end
 ```
-![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj5l8mip0j31kw0jcn16.jpg)
+
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj5pfhb7sj31js0o40wt.jpg)

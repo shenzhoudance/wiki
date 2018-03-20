@@ -455,3 +455,35 @@ git push origin EUD
 ```
 
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj5pfhb7sj31js0o40wt.jpg)
+```
+git heroku -b heroku
+---
+Gemfile
+gem 'sqlite3', '1.3.13'
+
+group :production do
+  gem 'pg', '0.20.0'
+end
+---
+bundle install
+rails server
+http://localhost:3000/
+---
+git add .
+git commit -a -m "Update Gemfile for Heroku"
+heroku create xiaoweiwiki
+git push heroku heroku:master
+rake assets:clean
+eroku run rake db:migrate
+heroku open
+https://xiaoweiwiki.herokuapp.com/
+```
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpjbouhm7ej31kw0ui7gd.jpg)
+
+
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpjbv21v91j31bk0iwaei.jpg)
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpjbuv9vauj31ce0peqa1.jpg)
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpjbun5w9ej31bw0pswol.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpjbud9z9mj31cg0k8gtz.jpg)
+
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpjbv87nkzj31kw0i00tq.jpg)

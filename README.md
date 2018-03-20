@@ -299,7 +299,9 @@ rails c
 git status
 git add .
 git commit -m "add association between user and article"
+git push origin relation
 
 ```
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj289fef5j31kw0l7qca.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj2a0atlgj30w00rq0w0.jpg)
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2cuz5lzj31kg0q2tfb.jpg)

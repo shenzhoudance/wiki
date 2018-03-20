@@ -323,6 +323,101 @@ http://localhost:3000/
 git status
 git add .
 git commit -m "authenticate_user"
+git push origin relation
 ```
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj2qv5gugj315k0qe0w0.jpg)
 ![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2qo3v0xj315w0tkgpa.jpg)
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2t5g274j31d00k0gqm.jpg)
+```
+git checkout -b category
+rails g model Category name:string
+rake db:migrate
+rails g migration add_category_id_to_articles category_id:integer
+rake db:migrate
+```
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj3b1uarij31kw0feq7g.jpg)
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpj3cheennj31iu0m6ag4.jpg)
+
+```
+app/models/article.rb
+---
+class Article < ApplicationRecord
+  belongs_to :user
+  belongs_to :category
+end
+app/models/category.rb
+---
+class Category < ApplicationRecord
+  has_many :articles
+end
+---
+rails c
+Category
+Category.connection
+Category
+Category.create(name: "Art")
+Category.create(name: "Technology")
+Category.create(name: "Politics")
+Category.count
+@articles = Article.last
+---
+Article.all
+Article.count
+@article = Article.first
+@article.category_id = 1
+@article
+@article = Article.find(2)
+@article.category_id = 3
+@article = Article.find(3)
+@article.category_id = 1
+@article
+---
+```
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj458rxqqj317a0f2afn.jpg)
+![image](https://ws3.sinaimg.cn/large/006tNc79gy1fpj453gmxnj31kw0hj7c3.jpg)
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj44xyqyvj31kw0p014d.jpg)
+
+```
+app/views/layouts/application.html.haml
+---
+!!!
+%html
+%head
+	%title Wiki
+	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+	= javascript_include_tag 'application', 'data-turbolinks-track' => true
+	= csrf_meta_tags
+%body
+	%nav.navbar.navbar-default.navbar-fixed-top
+		.container
+			= link_to "Wiki", root_path, class: "navbar-brand"
+			%ul.nav.navbar-nav.navbar-right
+				- if user_signed_in?
+					%li= link_to "New Article", new_article_path
+	%p.notice= notice
+	%p.alert= alert
+
+	.container
+		.row
+			.col-md-8
+				= yield
+			.col-md-4
+				%ul.list-group
+					%li= link_to "All Articles", root_path, class: "list-group-item"
+					- Category.all.each do |category|
+						%li= link_to category.name, articles_path(category: category.name), class: "list-group-item"
+---
+app/assets/stylesheets/application.scss
+---
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+ul {
+ list-style: none;
+}
+---
+git add .
+git commit -m "add Category to Article"
+```
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj4ru357uj31kw0ub792.jpg)
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj4xapymzj31kw0hm40a.jpg)

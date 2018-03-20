@@ -416,8 +416,42 @@ ul {
  list-style: none;
 }
 ---
+git status
 git add .
 git commit -m "add Category to Article"
+git push origin category
 ```
 ![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj4ru357uj31kw0ub792.jpg)
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj4xapymzj31kw0hm40a.jpg)
+
+```
+https://getbootstrap.com/docs/3.3/css/
+https://getbootstrap.com/docs/3.3/components/
+---
+app/controllers/articles_controller.rb
+---
+before_action :find_article, only: [:show, :edit, :update, :destroy]
+
+def edit
+end
+
+def update
+  if @article.update(article_params)
+    redirect_to @article
+  else
+    render 'edit'
+  end
+end
+
+def destroy
+  @article.destroy
+  redirect_to root_path
+end
+---
+git status
+git add .
+git commit -m "eud"
+git push origin EUD
+```
+
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj5pfhb7sj31js0o40wt.jpg)

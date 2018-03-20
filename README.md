@@ -447,6 +447,11 @@ def destroy
   @article.destroy
   redirect_to root_path
 end
+---
+git status
+git add .
+git commit -m "eud"
+git push origin EUD
 ```
 
 ![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj5pfhb7sj31js0o40wt.jpg)

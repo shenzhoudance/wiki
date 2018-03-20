@@ -305,3 +305,24 @@ git push origin relation
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj289fef5j31kw0l7qca.jpg)
 ![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj2a0atlgj30w00rq0w0.jpg)
 ![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2cuz5lzj31kg0q2tfb.jpg)
+
+```
+app/controllers/articles_controller.rb
+---
+before_action :find_article, only:[:show]
+before_action :authenticate_user!, except: [:index, :show]
+---
+app/views/articles/index.html.haml
+---
+- if user_signed_in?
+	= link_to "New Article", new_article_path
+---
+rails server
+http://localhost:3000/
+---
+git status
+git add .
+git commit -m "authenticate_user"
+```
+![image](https://ws4.sinaimg.cn/large/006tNc79gy1fpj2qv5gugj315k0qe0w0.jpg)
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj2qo3v0xj315w0tkgpa.jpg)

@@ -227,7 +227,17 @@ http://localhost:3000/users/sign_up
 ![image](https://ws4.sinaimg.cn/large/006tKfTcgy1fpig4nm4xhj30uu0gegmw.jpg)
 
 ```
+git checkout -b devise2
 rails c
-
-
+User
+User.connection
+User.count
+User.first
+exit
+---
+git status
+git add .
+git commit -m "add devise and generate user model"
 ```
+![image](https://ws1.sinaimg.cn/large/006tNc79gy1fpj19ltap8j31kw0ml132.jpg)
+![image](https://ws2.sinaimg.cn/large/006tNc79gy1fpj194nonij31by0cmn1m.jpg)
